@@ -1,6 +1,6 @@
 import { StrictMode, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
 import Contact from './pages/Contact.tsx'
@@ -9,7 +9,10 @@ import ProjectAggieCC from './pages/ProjectAggieCC.tsx'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
-  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  const navType = useNavigationType()
+  useEffect(() => {
+    if (navType !== 'POP') window.scrollTo(0, 0)
+  }, [pathname, navType])
   return null
 }
 
