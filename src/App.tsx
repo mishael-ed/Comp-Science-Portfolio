@@ -114,9 +114,9 @@ function App() {
           <img src={profilePic} alt="Mishael Edegwa" className="profile-pic profile-pic--about" />
           <h2 className="section-title about-title">About Me</h2>
           <div className="about-grid">
-            <div className="about-card">
+            <Link className="about-card" to="/education">
               <h3>My Education</h3>
-            </div>
+            </Link>
             <div className="about-card">
               <h3>My Experience</h3>
             </div>

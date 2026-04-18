@@ -7,6 +7,7 @@ import Contact from './pages/Contact.tsx'
 import ProjectAI from './pages/ProjectAI.tsx'
 import ProjectAggieCC from './pages/ProjectAggieCC.tsx'
 import ProjectMoodRobe from './pages/ProjectMoodRobe.tsx'
+import Education from './pages/Education.tsx'
 
 // Tell the browser we handle scroll restoration ourselves
 window.history.scrollRestoration = 'manual'
@@ -47,6 +48,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/projects/ai-performance-predictor" element={<ProjectAI />} />
         <Route path="/projects/aggie-carpet-cleaning" element={<ProjectAggieCC />} />
         <Route path="/projects/moodrobe" element={<ProjectMoodRobe />} />
+        <Route path="/education" element={<Education />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

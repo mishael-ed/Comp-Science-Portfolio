@@ -11,9 +11,8 @@ html, body, #root {
 
 .app {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   background: var(--white);
+  padding-top: 70px;
 }
 
 /* Typography */
@@ -49,8 +48,10 @@ p {
   background: var(--white);
   border-bottom: 1px solid var(--border);
   padding: 1.5rem 0;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
 }
 
@@ -374,6 +375,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
