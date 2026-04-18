@@ -90,17 +90,17 @@ function App() {
                 <span className="project-card-arrow">→</span>
               </div>
             </Link>
-            <a className="project-card" href="#">
+            <Link className="project-card" to="/projects/moodrobe">
               <div className="project-card-body">
-                <p className="project-card-category">Category</p>
-                <h3 className="project-card-name">Project Name</h3>
-                <p className="project-card-stack">Tech · Stack · Here</p>
+                <p className="project-card-category">Full-Stack · TypeScript · DDD · E-Commerce</p>
+                <h3 className="project-card-name">MoodRobe Fashion Platform</h3>
+                <p className="project-card-stack">React · Node.js · PostgreSQL · TypeORM · Paystack</p>
               </div>
               <div className="project-card-footer">
                 <span>View Project</span>
                 <span className="project-card-arrow">→</span>
               </div>
-            </a>
+            </Link>
           </div>
           <div className="section-cta">
             <Link to="/contact" className="btn btn-primary work-with-me-btn">Work With Me</Link>
