@@ -79,17 +79,17 @@ function App() {
                 <span className="project-card-arrow">→</span>
               </div>
             </Link>
-            <a className="project-card" href="#">
+            <Link className="project-card" to="/projects/aggie-carpet-cleaning">
               <div className="project-card-body">
-                <p className="project-card-category">Category</p>
-                <h3 className="project-card-name">Project Name</h3>
-                <p className="project-card-stack">Tech · Stack · Here</p>
+                <p className="project-card-category">Full-Stack Web Development · Local Business · SEO</p>
+                <h3 className="project-card-name">Aggie Carpet Cleaning Website</h3>
+                <p className="project-card-stack">React · React Router · FormSubmit · CSS · CRA</p>
               </div>
               <div className="project-card-footer">
                 <span>View Project</span>
                 <span className="project-card-arrow">→</span>
               </div>
-            </a>
+            </Link>
             <a className="project-card" href="#">
               <div className="project-card-body">
                 <p className="project-card-category">Category</p>

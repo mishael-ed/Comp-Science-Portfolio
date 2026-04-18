@@ -5,6 +5,7 @@ import './index.css'
 import App from './App.tsx'
 import Contact from './pages/Contact.tsx'
 import ProjectAI from './pages/ProjectAI.tsx'
+import ProjectAggieCC from './pages/ProjectAggieCC.tsx'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -20,6 +21,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/" element={<App />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/projects/ai-performance-predictor" element={<ProjectAI />} />
+        <Route path="/projects/aggie-carpet-cleaning" element={<ProjectAggieCC />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
