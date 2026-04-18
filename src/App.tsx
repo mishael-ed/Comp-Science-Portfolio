@@ -117,12 +117,12 @@ function App() {
             <Link className="about-card" to="/education">
               <h3>My Education</h3>
             </Link>
-            <div className="about-card">
+            <Link className="about-card" to="/experience">
               <h3>My Experience</h3>
-            </div>
-            <div className="about-card">
+            </Link>
+            <Link className="about-card" to="/skills">
               <h3>My Skills &amp; Completed Courses</h3>
-            </div>
+            </Link>
           </div>
           <div className="section-cta">
             <Link to="/contact" className="btn btn-secondary-white work-with-me-btn">Work With Me</Link>
@@ -135,7 +135,6 @@ function App() {
         <div className="footer-content">
           <p>&copy; 2026 Mishael Edegwa. All rights reserved.</p>
           <div className="social-links">
-            <a href="#">GitHub</a>
             <a href="#">LinkedIn</a>
           </div>
         </div>
