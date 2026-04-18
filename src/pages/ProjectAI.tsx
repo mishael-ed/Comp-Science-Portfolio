@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './ProjectAI.css'
 
 export default function ProjectAI() {
+  const navigate = useNavigate()
   return (
     <div className="project-page">
       <nav className="project-nav">
-        <Link to="/" className="project-back">← Back to Portfolio</Link>
+        <button onClick={() => navigate(-1)} className="project-back">← Back to Portfolio</button>
         <Link to="/contact" className="btn btn-primary project-nav-contact">Contact Me</Link>
       </nav>
 
@@ -186,7 +187,7 @@ export default function ProjectAI() {
           >
             View Deployed Project
           </a>
-          <Link to="/" className="project-back-btn">← Back to Portfolio</Link>
+          <button onClick={() => navigate(-1)} className="project-back-btn">← Back to Portfolio</button>
         </div>
 
       </div>

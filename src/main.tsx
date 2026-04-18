@@ -7,19 +7,39 @@ import Contact from './pages/Contact.tsx'
 import ProjectAI from './pages/ProjectAI.tsx'
 import ProjectAggieCC from './pages/ProjectAggieCC.tsx'
 
-function ScrollToTop() {
+// Tell the browser we handle scroll restoration ourselves
+window.history.scrollRestoration = 'manual'
+
+function ScrollManager() {
   const { pathname } = useLocation()
   const navType = useNavigationType()
+
   useEffect(() => {
-    if (navType !== 'POP') window.scrollTo(0, 0)
+    if (navType === 'POP') {
+      const saved = sessionStorage.getItem(`scroll:${pathname}`)
+      const y = saved ? parseInt(saved, 10) : 0
+      // Double rAF ensures the DOM is fully painted before restoring
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          window.scrollTo(0, y)
+        })
+      })
+    } else {
+      window.scrollTo(0, 0)
+    }
+
+    const saveScroll = () => sessionStorage.setItem(`scroll:${pathname}`, String(window.scrollY))
+    window.addEventListener('scroll', saveScroll, { passive: true })
+    return () => window.removeEventListener('scroll', saveScroll)
   }, [pathname, navType])
+
   return null
 }
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <ScrollToTop />
+      <ScrollManager />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/contact" element={<Contact />} />

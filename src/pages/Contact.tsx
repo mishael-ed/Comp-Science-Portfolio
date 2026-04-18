@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Contact.css'
 
 // ─── Web3Forms setup ──────────────────────────────────────────────────────────
@@ -12,6 +12,7 @@ const WEB3FORMS_KEY = '9af89887-6048-4611-b0ac-b762eb6dfe77'
 type Status = 'idle' | 'sending' | 'success' | 'error'
 
 export default function Contact() {
+  const navigate = useNavigate()
   const formRef = useRef<HTMLFormElement>(null)
   const [status, setStatus] = useState<Status>('idle')
 
@@ -48,7 +49,7 @@ export default function Contact() {
   return (
     <div className="contact-page">
       <nav className="contact-nav">
-        <Link to="/" className="contact-back">← Back to Portfolio</Link>
+        <button onClick={() => navigate(-1)} className="contact-back">← Back to Portfolio</button>
       </nav>
 
       <div className="contact-wrapper">

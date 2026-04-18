@@ -30,6 +30,11 @@
   color: var(--black);
   text-decoration: none;
   transition: color 0.2s ease;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--sans);
 }
 
 .project-back:hover {
@@ -289,6 +294,11 @@
   color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.2s ease;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--sans);
 }
 
 .project-back-btn:hover {
