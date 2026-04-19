@@ -135,7 +135,7 @@ function App() {
         <div className="footer-content">
           <p>&copy; 2026 Mishael Edegwa. All rights reserved.</p>
           <div className="social-links">
-            <a href="#">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/ed-mishael-5aa633230/" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
         </div>
       </footer>
