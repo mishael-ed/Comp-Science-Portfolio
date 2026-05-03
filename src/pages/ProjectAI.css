@@ -90,6 +90,24 @@
   box-shadow: 0 8px 24px rgba(255, 107, 53, 0.35);
 }
 
+.project-hero-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.project-live-btn--outline {
+  background: transparent;
+  border: 2px solid var(--orange);
+  color: var(--orange);
+}
+
+.project-live-btn--outline:hover {
+  background: var(--orange);
+  color: var(--white);
+}
+
 /* Body */
 .project-body {
   max-width: 900px;

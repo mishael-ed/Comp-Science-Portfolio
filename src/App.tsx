@@ -101,6 +101,17 @@ function App() {
                 <span className="project-card-arrow">→</span>
               </div>
             </Link>
+            <Link className="project-card" to="/projects/colour-correction">
+              <div className="project-card-body">
+                <p className="project-card-category">Applied Machine Learning · Colour Science</p>
+                <h3 className="project-card-name">Colour Correction — Text Colour Classifier</h3>
+                <p className="project-card-stack">Python · scikit-learn · Pandas · Matplotlib · ipywidgets</p>
+              </div>
+              <div className="project-card-footer">
+                <span>View Project</span>
+                <span className="project-card-arrow">→</span>
+              </div>
+            </Link>
           </div>
           <div className="section-cta">
             <Link to="/contact" className="btn btn-primary work-with-me-btn">Work With Me</Link>

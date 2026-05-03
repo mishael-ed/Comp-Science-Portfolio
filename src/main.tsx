@@ -7,6 +7,7 @@ import Contact from './pages/Contact.tsx'
 import ProjectAI from './pages/ProjectAI.tsx'
 import ProjectAggieCC from './pages/ProjectAggieCC.tsx'
 import ProjectMoodRobe from './pages/ProjectMoodRobe.tsx'
+import ProjectColorCC from './pages/ProjectColorCC.tsx'
 import Education from './pages/Education.tsx'
 import Experience from './pages/Experience.tsx'
 import Skills from './pages/Skills.tsx'
@@ -50,6 +51,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/projects/ai-performance-predictor" element={<ProjectAI />} />
         <Route path="/projects/aggie-carpet-cleaning" element={<ProjectAggieCC />} />
         <Route path="/projects/moodrobe" element={<ProjectMoodRobe />} />
+        <Route path="/projects/colour-correction" element={<ProjectColorCC />} />
         <Route path="/education" element={<Education />} />
         <Route path="/experience" element={<Experience />} />
         <Route path="/skills" element={<Skills />} />
