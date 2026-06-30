@@ -16,7 +16,7 @@ export default function ProjectAggieCC() {
           <p className="project-category">Full-Stack Web Development · React SPA · Local Business Marketing · SEO Content Strategy</p>
           <h1 className="project-title">Aggie Carpet Cleaning<br />Business Website</h1>
           <a
-            href="https://www.aggiecarpetcleaningnm.com"
+            href="https://aggiecarpetcleaning.com"
             target="_blank"
             rel="noreferrer"
             className="project-live-btn"
@@ -180,7 +180,7 @@ export default function ProjectAggieCC() {
         {/* CTA */}
         <div className="project-cta">
           <a
-            href="https://www.aggiecarpetcleaningnm.com"
+            href="https://aggiecarpetcleaning.com"
             target="_blank"
             rel="noreferrer"
             className="project-live-btn"

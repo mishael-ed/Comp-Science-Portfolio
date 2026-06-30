@@ -8,6 +8,8 @@ import ProjectAI from './pages/ProjectAI.tsx'
 import ProjectAggieCC from './pages/ProjectAggieCC.tsx'
 import ProjectMoodRobe from './pages/ProjectMoodRobe.tsx'
 import ProjectColorCC from './pages/ProjectColorCC.tsx'
+import ProjectWeb3ConnectHR from './pages/ProjectWeb3ConnectHR.tsx'
+import ProjectBERSK from './pages/ProjectBERSK.tsx'
 import Education from './pages/Education.tsx'
 import Experience from './pages/Experience.tsx'
 import Skills from './pages/Skills.tsx'
@@ -52,6 +54,8 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/projects/aggie-carpet-cleaning" element={<ProjectAggieCC />} />
         <Route path="/projects/moodrobe" element={<ProjectMoodRobe />} />
         <Route path="/projects/colour-correction" element={<ProjectColorCC />} />
+        <Route path="/projects/web3connect-hr" element={<ProjectWeb3ConnectHR />} />
+        <Route path="/projects/bersk" element={<ProjectBERSK />} />
         <Route path="/education" element={<Education />} />
         <Route path="/experience" element={<Experience />} />
         <Route path="/skills" element={<Skills />} />

@@ -67,52 +67,93 @@ function App() {
       <section id="projects" className="section projects">
         <div className="section-content">
           <h2 className="section-title">Top Projects</h2>
-          <div className="projects-grid">
-            <Link className="project-card" to="/projects/ai-performance-predictor">
-              <div className="project-card-body">
-                <p className="project-card-category">Machine Learning · AI for Education</p>
-                <h3 className="project-card-name">AI Academic Performance Predictor</h3>
-                <p className="project-card-stack">Python · Streamlit · XGBoost · Random Forest · LSTM · MySQL</p>
-              </div>
-              <div className="project-card-footer">
-                <span>View Project</span>
-                <span className="project-card-arrow">→</span>
-              </div>
-            </Link>
-            <Link className="project-card" to="/projects/aggie-carpet-cleaning">
-              <div className="project-card-body">
-                <p className="project-card-category">Full-Stack Web Development · Local Business · SEO</p>
-                <h3 className="project-card-name">Aggie Carpet Cleaning Website</h3>
-                <p className="project-card-stack">React · React Router · FormSubmit · CSS · CRA</p>
-              </div>
-              <div className="project-card-footer">
-                <span>View Project</span>
-                <span className="project-card-arrow">→</span>
-              </div>
-            </Link>
-            <Link className="project-card" to="/projects/moodrobe">
-              <div className="project-card-body">
-                <p className="project-card-category">Full-Stack · TypeScript · DDD · E-Commerce</p>
-                <h3 className="project-card-name">MoodRobe Fashion Platform</h3>
-                <p className="project-card-stack">React · Node.js · PostgreSQL · TypeORM · Paystack</p>
-              </div>
-              <div className="project-card-footer">
-                <span>View Project</span>
-                <span className="project-card-arrow">→</span>
-              </div>
-            </Link>
-            <Link className="project-card" to="/projects/colour-correction">
-              <div className="project-card-body">
-                <p className="project-card-category">Applied Machine Learning · Colour Science</p>
-                <h3 className="project-card-name">Colour Correction — Text Colour Classifier</h3>
-                <p className="project-card-stack">Python · scikit-learn · Pandas · Matplotlib · ipywidgets</p>
-              </div>
-              <div className="project-card-footer">
-                <span>View Project</span>
-                <span className="project-card-arrow">→</span>
-              </div>
-            </Link>
+
+          {/* Machine Learning */}
+          <div className="projects-category">
+            <div className="projects-category-header">
+              <span className="projects-category-label">Machine Learning</span>
+              <span className="projects-category-line" />
+            </div>
+            <div className="projects-grid">
+              <Link className="project-card" to="/projects/ai-performance-predictor">
+                <div className="project-card-body">
+                  <p className="project-card-category">Machine Learning · AI for Education</p>
+                  <h3 className="project-card-name">AI Academic Performance Predictor</h3>
+                  <p className="project-card-stack">Python · Streamlit · XGBoost · Random Forest · LSTM · MySQL</p>
+                </div>
+                <div className="project-card-footer">
+                  <span>View Project</span>
+                  <span className="project-card-arrow">→</span>
+                </div>
+              </Link>
+              <Link className="project-card" to="/projects/colour-correction">
+                <div className="project-card-body">
+                  <p className="project-card-category">Applied Machine Learning · Colour Science</p>
+                  <h3 className="project-card-name">Colour Correction — Text Colour Classifier</h3>
+                  <p className="project-card-stack">Python · scikit-learn · Pandas · Matplotlib · ipywidgets</p>
+                </div>
+                <div className="project-card-footer">
+                  <span>View Project</span>
+                  <span className="project-card-arrow">→</span>
+                </div>
+              </Link>
+            </div>
           </div>
+
+          {/* Web Development */}
+          <div className="projects-category">
+            <div className="projects-category-header">
+              <span className="projects-category-label">Web Development</span>
+              <span className="projects-category-line" />
+            </div>
+            <div className="projects-grid">
+              <Link className="project-card" to="/projects/aggie-carpet-cleaning">
+                <div className="project-card-body">
+                  <p className="project-card-category">Full-Stack Web Development · Local Business · SEO</p>
+                  <h3 className="project-card-name">Aggie Carpet Cleaning Website</h3>
+                  <p className="project-card-stack">React · React Router · FormSubmit · CSS · CRA</p>
+                </div>
+                <div className="project-card-footer">
+                  <span>View Project</span>
+                  <span className="project-card-arrow">→</span>
+                </div>
+              </Link>
+              <Link className="project-card" to="/projects/moodrobe">
+                <div className="project-card-body">
+                  <p className="project-card-category">Full-Stack · TypeScript · DDD · E-Commerce</p>
+                  <h3 className="project-card-name">MoodRobe Fashion Platform</h3>
+                  <p className="project-card-stack">React · Node.js · PostgreSQL · TypeORM · Paystack</p>
+                </div>
+                <div className="project-card-footer">
+                  <span>View Project</span>
+                  <span className="project-card-arrow">→</span>
+                </div>
+              </Link>
+              <Link className="project-card" to="/projects/web3connect-hr">
+                <div className="project-card-body">
+                  <p className="project-card-category">Frontend Web Development · Recruitment Platform</p>
+                  <h3 className="project-card-name">Web3Connect HR</h3>
+                  <p className="project-card-stack">React 18 · React Router · Vite · Vanilla CSS · Vercel</p>
+                </div>
+                <div className="project-card-footer">
+                  <span>View Project</span>
+                  <span className="project-card-arrow">→</span>
+                </div>
+              </Link>
+              <Link className="project-card" to="/projects/bersk">
+                <div className="project-card-body">
+                  <p className="project-card-category">Frontend Web Development · Marketing Site</p>
+                  <h3 className="project-card-name">BERSK — Client Acquisition Agency</h3>
+                  <p className="project-card-stack">HTML5 · Vanilla CSS · Vanilla JS · Font Awesome · formsubmit.co</p>
+                </div>
+                <div className="project-card-footer">
+                  <span>View Project</span>
+                  <span className="project-card-arrow">→</span>
+                </div>
+              </Link>
+            </div>
+          </div>
+
           <div className="section-cta">
             <Link to="/contact" className="btn btn-primary work-with-me-btn">Work With Me</Link>
           </div>
