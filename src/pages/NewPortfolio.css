@@ -24,6 +24,7 @@ body:has(.np-page),
   --surface-2: #161719;
   --white: #f4f4f2;
   --silver: #a7a9ac;
+  --red: #c84d4d;
   --line: rgba(255,255,255,.15);
   min-height: 100vh;
   overflow: visible;
@@ -67,7 +68,7 @@ body:has(.np-page),
 .np-hero { min-height: calc(100svh - 78px); display: block; background: radial-gradient(circle at 80% 25%, #34363a 0%, #17181a 23%, #0b0c0d 48%, #070809 75%); }
 .np-hero-copy { min-height: calc(100svh - 78px); max-width: 1450px; padding: clamp(70px, 8vw, 118px) clamp(26px, 7vw, 108px) 48px; display: flex; flex-direction: column; align-items: flex-start; }
 .np-eyebrow, .np-kicker { display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 2.1px; }
-.np-eyebrow span { width: 7px; height: 7px; border-radius: 50%; background: white; box-shadow: 0 0 16px rgba(255,255,255,.65); }
+.np-eyebrow span { width: 7px; height: 7px; border-radius: 50%; background: var(--red); box-shadow: 0 0 16px rgba(200,77,77,.55); }
 .np-hero h1 { margin: 52px 0 40px; font: 500 clamp(54px, 6.7vw, 104px)/.9 'Manrope', sans-serif; letter-spacing: -.07em; }
 .np-hero h1 em, .np-section-head h2 em, .np-cap-title h2 em, .np-about h2 em, .np-contact h2 em { font-family: 'Playfair Display', serif; font-weight: 500; color: #aaacae; }
 .np-hero-intro { max-width: 710px; color: var(--silver) !important; font-size: 15px; line-height: 1.72; }
@@ -114,11 +115,11 @@ body:has(.np-page),
 .np-filter button:hover { color: #fff; transform: translateY(-2px); text-shadow: 0 0 18px rgba(255,255,255,.25); }
 .np-filter button.is-active { color: #fff; }
 .np-filter button.is-active span { color: #b9bbbd; }
-.np-filter-marker { height: 2px; position: absolute; bottom: 0; z-index: 2; background: linear-gradient(90deg, transparent, #fff 18%, #fff 82%, transparent); pointer-events: none; transition: left .42s cubic-bezier(.22,1,.36,1), width .42s cubic-bezier(.22,1,.36,1); }
+.np-filter-marker { height: 2px; position: absolute; bottom: 0; z-index: 2; background: linear-gradient(90deg, transparent, var(--red) 22%, #e07171 50%, var(--red) 78%, transparent); box-shadow: 0 0 12px rgba(200,77,77,.2); pointer-events: none; transition: left .42s cubic-bezier(.22,1,.36,1), width .42s cubic-bezier(.22,1,.36,1); }
 .np-project-list { border-top: 1px solid var(--line); }
 .np-project { padding: 38px 0; display: grid; grid-template-columns: 120px minmax(310px,.95fr) minmax(310px,1fr); gap: clamp(24px,4vw,64px); }
 .np-project:not(:last-child) { border-bottom: 1px solid var(--line); }
-.np-project-meta > span { font: 600 10px/1 'Manrope'; }
+.np-project-meta > span { color: #d06565; font: 600 10px/1 'Manrope'; }
 .np-project-meta p { margin-top: 24px; color: #85878a; font-size: 9px; line-height: 1.45; text-transform: uppercase; letter-spacing: 1px; }
 .np-project-visual { height: 330px; position: relative; overflow: hidden; display: grid; place-items: center; background: radial-gradient(circle at 25% 15%, #a9abad, #383a3d 42%, #101113 75%); }
 .np-project-visual--predictor { background: linear-gradient(145deg, #090a0b, #717478 54%, #d9dadb); }
@@ -152,7 +153,7 @@ body:has(.np-page),
 .np-timeline { border: 0; }
 .np-role { padding: 38px 0 44px; display: grid; grid-template-columns: 70px .7fr 1.3fr; gap: 40px; }
 .np-role:not(:last-child) { border-bottom: 1px solid var(--line); }
-.np-role-number { color: #86888b; font: 600 10px/1 'Manrope'; }
+.np-role-number { color: #d06565; font: 600 10px/1 'Manrope'; }
 .np-role-company { margin-bottom: 8px !important; color: #85878a !important; font-size: 10px; text-transform: uppercase; letter-spacing: 1.4px; }
 .np-role h3 { max-width: 310px; font: 500 23px/1.2 'Manrope'; letter-spacing: -.03em; }
 .np-role-copy > p { max-width: 650px; color: var(--silver); font-size: 13px; line-height: 1.65; }
@@ -163,13 +164,13 @@ body:has(.np-page),
 .np-cap-list { border: 0; }
 .np-capability { padding: 28px 0 31px; display: grid; grid-template-columns: 48px 1fr; gap: 18px; }
 .np-capability:not(:last-child) { border-bottom: 1px solid var(--line); }
-.np-capability > span { color: #a5a7aa; font-size: 9px; }
+.np-capability > span { color: #d06565; font-size: 9px; }
 .np-capability h3 { font: 500 19px/1.2 'Manrope'; }
 .np-capability p { margin: 10px 0 17px; max-width: 580px; color: var(--silver); font-size: 12px; line-height: 1.6; }
 .np-capability small { color: #d4d5d6; font-size: 9px; line-height: 1.7; letter-spacing: .55px; }
 
 .np-about { padding: 130px clamp(22px,7vw,108px); display: grid; grid-template-columns: .25fr 1.75fr; background: radial-gradient(circle at 84% 19%, #5b5e62, #242629 34%, #090a0b 73%); }
-.np-about-side { writing-mode: vertical-rl; font-size: 9px; letter-spacing: 2.4px; }
+.np-about-side { writing-mode: vertical-rl; color: #d06565 !important; font-size: 9px; letter-spacing: 2.4px; }
 .np-about h2 { font: 500 clamp(50px,6.6vw,94px)/.96 'Manrope'; letter-spacing: -.065em; }
 .np-about-copy { margin: 80px 0 0 auto; max-width: 720px; }
 .np-about-copy > p { margin-bottom: 18px; color: #c0c2c4; font-size: 14px; line-height: 1.72; }
