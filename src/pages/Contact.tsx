@@ -35,13 +35,16 @@ export default function Contact() {
         }),
       })
 
-      if (res.ok) {
+      const data = await res.json()
+      console.log('Web3Forms response:', data)
+      if (res.ok && data.success) {
         setStatus('success')
         formRef.current.reset()
       } else {
         setStatus('error')
       }
-    } catch {
+    } catch (err) {
+      console.error('Form error:', err)
       setStatus('error')
     }
   }

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './ProjectAI.css'
 
 export default function ProjectColorCC() {
@@ -7,7 +7,7 @@ export default function ProjectColorCC() {
     <div className="project-page">
       <nav className="project-nav">
         <button onClick={() => navigate(-1)} className="project-back">← Back to Portfolio</button>
-        <Link to="/contact" className="btn btn-primary project-nav-contact">Contact Me</Link>
+        <a href="/#contact" className="project-nav-contact">Get in touch <span>→</span></a>
       </nav>
 
       {/* Hero */}

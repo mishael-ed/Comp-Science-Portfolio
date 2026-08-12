@@ -2,7 +2,6 @@ import { StrictMode, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from 'react-router-dom'
 import './index.css'
-import App from './App.tsx'
 import Contact from './pages/Contact.tsx'
 import ProjectAI from './pages/ProjectAI.tsx'
 import ProjectAggieCC from './pages/ProjectAggieCC.tsx'
@@ -13,16 +12,24 @@ import ProjectBERSK from './pages/ProjectBERSK.tsx'
 import Education from './pages/Education.tsx'
 import Experience from './pages/Experience.tsx'
 import Skills from './pages/Skills.tsx'
+import NewPortfolio from './pages/NewPortfolio.tsx'
+import ProjectLeadRanx from './pages/ProjectLeadRanx.tsx'
 
 // Tell the browser we handle scroll restoration ourselves
 window.history.scrollRestoration = 'manual'
 
 function ScrollManager() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   const navType = useNavigationType()
 
   useEffect(() => {
-    if (navType === 'POP') {
+    if (hash) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.getElementById(hash.slice(1))?.scrollIntoView()
+        })
+      })
+    } else if (navType === 'POP') {
       const saved = sessionStorage.getItem(`scroll:${pathname}`)
       const y = saved ? parseInt(saved, 10) : 0
       // Double rAF ensures the DOM is fully painted before restoring
@@ -38,7 +45,7 @@ function ScrollManager() {
     const saveScroll = () => sessionStorage.setItem(`scroll:${pathname}`, String(window.scrollY))
     window.addEventListener('scroll', saveScroll, { passive: true })
     return () => window.removeEventListener('scroll', saveScroll)
-  }, [pathname, navType])
+  }, [pathname, hash, navType])
 
   return null
 }
@@ -48,7 +55,7 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <ScrollManager />
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<NewPortfolio />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/projects/ai-performance-predictor" element={<ProjectAI />} />
         <Route path="/projects/aggie-carpet-cleaning" element={<ProjectAggieCC />} />
@@ -56,9 +63,11 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/projects/colour-correction" element={<ProjectColorCC />} />
         <Route path="/projects/web3connect-hr" element={<ProjectWeb3ConnectHR />} />
         <Route path="/projects/bersk" element={<ProjectBERSK />} />
+        <Route path="/projects/leadranx" element={<ProjectLeadRanx />} />
         <Route path="/education" element={<Education />} />
         <Route path="/experience" element={<Experience />} />
         <Route path="/skills" element={<Skills />} />
+        <Route path="/new" element={<NewPortfolio />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
