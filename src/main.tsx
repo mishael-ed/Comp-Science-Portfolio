@@ -1,6 +1,7 @@
 import { StrictMode, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from 'react-router-dom'
+import './fonts.css'
 import './index.css'
 import Contact from './pages/Contact.tsx'
 import ProjectAI from './pages/ProjectAI.tsx'
