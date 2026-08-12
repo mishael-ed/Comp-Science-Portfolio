@@ -96,7 +96,7 @@ body:has(.np-page),
 
 .np-marquee { overflow: hidden; padding: 17px 0; color: #0a0b0c; background: linear-gradient(90deg, #999b9e, #fff 46%, #7f8184); white-space: nowrap; font: 600 11px/1 'Manrope'; letter-spacing: 1.6px; text-transform: uppercase; }
 .np-marquee-track { width: max-content; display: flex; animation: np-marquee 24s linear infinite; will-change: transform; }
-.np-marquee-group { flex: 0 0 auto; display: flex; align-items: center; }
+.np-marquee-group { width: max(100vw,1200px); flex: 0 0 max(100vw,1200px); display: flex; align-items: center; justify-content: space-around; }
 .np-marquee i { margin: 0 30px; color: #55575a; font-style: normal; }
 @keyframes np-marquee { to { transform: translateX(-50%); } }
 
