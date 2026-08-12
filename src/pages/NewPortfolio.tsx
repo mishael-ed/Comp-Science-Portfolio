@@ -201,7 +201,20 @@ export default function NewPortfolio() {
         </section>
 
         <div className="np-marquee" aria-hidden="true">
-          <div>Full-Stack Development <i>✦</i> Applied Machine Learning <i>✦</i> Production Software <i>✦</i> Data Systems <i>✦</i> Full-Stack Development <i>✦</i></div>
+          <div className="np-marquee-track">
+            <div className="np-marquee-group">
+              <span>Full-Stack Development</span><i>✦</i>
+              <span>Applied Machine Learning</span><i>✦</i>
+              <span>Production Software</span><i>✦</i>
+              <span>Data Systems</span><i>✦</i>
+            </div>
+            <div className="np-marquee-group">
+              <span>Full-Stack Development</span><i>✦</i>
+              <span>Applied Machine Learning</span><i>✦</i>
+              <span>Production Software</span><i>✦</i>
+              <span>Data Systems</span><i>✦</i>
+            </div>
+          </div>
         </div>
 
         <section className="np-work" id="work">
