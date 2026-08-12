@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './NewPortfolio.css'
 
@@ -13,9 +13,7 @@ const projects = [
     type: 'AI Lead Triage System',
     summary: 'An AI-assisted lead triage system that turns messy CSV lead data into a ranked and explainable shortlist for sales teams.',
     stack: ['React', 'FastAPI', 'Python', 'SQLite', 'Claude', 'Docker'],
-    highlights: ['LLM-powered lead classification', 'Deterministic lead scoring', 'Automatic regex fallback', 'API circuit-breaker architecture', 'Explainable rankings', 'Single-container deployment'],
     categories: ['Web Development', 'Full Stack', 'AI'] as Filter[],
-    visual: 'leads',
     to: '/projects/leadranx',
   },
   {
@@ -24,9 +22,7 @@ const projects = [
     type: 'Machine Learning · Education',
     summary: 'An early-warning system designed to identify students at risk of academic failure before final examinations, giving educators an opportunity to intervene earlier.',
     stack: ['Python', 'XGBoost', 'Random Forest', 'LSTM', 'TensorFlow', 'Streamlit'],
-    highlights: ['Three-model ML ensemble', 'Student trajectory modelling', 'Automated feature engineering', 'Risk-tier classification', 'Interactive educator dashboard', 'CSV/PDF report generation'],
     categories: ['Machine Learning', 'AI'] as Filter[],
-    visual: 'predictor',
     to: '/projects/ai-performance-predictor',
   },
   {
@@ -35,9 +31,7 @@ const projects = [
     type: 'Frontend · Lead Generation',
     summary: 'A fast, mobile-first customer acquisition website built to turn local search traffic into qualified service enquiries.',
     stack: ['React', 'JavaScript', 'CSS', 'SEO', 'FormSubmit', 'Vercel'],
-    highlights: ['20+ SEO-structured pages', 'Mobile-first responsive system', 'Asynchronous lead capture', 'Local-search content architecture', 'Conversion-focused service pages', 'Production deployment'],
     categories: ['Web Development', 'Frontend'] as Filter[],
-    visual: 'aggie',
     to: '/projects/aggie-carpet-cleaning',
   },
   {
@@ -46,9 +40,7 @@ const projects = [
     type: 'Applied Machine Learning · Colour Science',
     summary: 'A text-colour classifier that uses WCAG-derived photometric features to predict whether black or white text will be most readable on any RGB background.',
     stack: ['Python', 'Scikit-learn', 'Pandas', 'Matplotlib', 'ipywidgets', 'Google Colab'],
-    highlights: ['WCAG relative-luminance features', 'Interpretable depth-1 decision tree', 'Near-perfect test accuracy', 'Real-time RGB slider demo', 'Contrast-aware recommendations', 'Portable one-threshold inference'],
     categories: ['Machine Learning', 'AI'] as Filter[],
-    visual: 'colour',
     to: '/projects/colour-correction',
   },
   {
@@ -57,9 +49,7 @@ const projects = [
     type: 'Frontend · Recruitment Platform',
     summary: 'A specialist recruitment platform that connects Web3 professionals with companies through structured candidate and employer intake experiences.',
     stack: ['React', 'React Router', 'Vite', 'Vanilla CSS', 'JavaScript', 'Vercel'],
-    highlights: ['Six-route React SPA', 'Candidate and employer lead capture', 'Custom floating-label forms', 'Accessible motion system', 'Lightweight analytics layer', 'Responsive production deployment'],
     categories: ['Web Development', 'Frontend'] as Filter[],
-    visual: 'web3',
     to: '/projects/web3connect-hr',
   },
   {
@@ -68,9 +58,7 @@ const projects = [
     type: 'Frontend · Client Acquisition',
     summary: 'A focused single-page marketing site that turns high-intent traffic into qualified leads for an automated client acquisition agency.',
     stack: ['HTML5', 'Vanilla CSS', 'JavaScript', 'FormSubmit', 'Font Awesome', 'Vercel'],
-    highlights: ['Single-file architecture', 'Zero framework dependencies', 'Conversion-focused page structure', 'JavaScript lead-capture modal', 'Responsive visual system', 'No-backend form delivery'],
     categories: ['Web Development', 'Frontend'] as Filter[],
-    visual: 'bersk',
     to: '/projects/bersk',
   },
 ]
@@ -111,35 +99,50 @@ function Arrow() {
   return <span aria-hidden="true">→</span>
 }
 
-function ProjectVisual({ kind, name }: { kind: string; name: string }) {
-  const visualCopy: Record<string, [string, string]> = {
-    predictor: ['RISK / SIGNAL', 'MODEL CONFIDENCE 94%'],
-    leads: ['LEAD / RANX', '32 LEADS RANKED'],
-    aggie: ['AGGIE / CLEAN', 'BOOK A SERVICE'],
-    colour: ['COLOR / CHECK', 'WCAG CONTRAST READY'],
-    web3: ['WEB3 / CONNECT', 'TALENT PLATFORM'],
-    bersk: ['BERSK / GROWTH', 'LEAD CAPTURE LIVE'],
-  }
-  const [title, metric] = visualCopy[kind] ?? [name.toUpperCase(), 'PROJECT SYSTEM']
+function AnimatedMetric({ value, suffix = '', precision = 0, detail }: { value: number; suffix?: string; precision?: number; detail?: string }) {
+  const metricRef = useRef<HTMLElement>(null)
+  const [displayValue, setDisplayValue] = useState(precision ? (0).toFixed(precision) : '0')
 
-  return (
-    <div className={`np-project-visual np-project-visual--${kind}`} aria-label={`${name} project preview`} role="img">
-      <div className="np-mock-browser">
-        <div className="np-mock-bar"><i /><i /><i /></div>
-        <div className="np-mock-content">
-          <strong>{title}</strong>
-          <div className="np-mock-chart"><span /><span /><span /><span /><span /></div>
-          <small>{metric}</small>
-        </div>
-      </div>
-      <span className="np-visual-orbit" />
-      <span className="np-visual-glow" />
-    </div>
-  )
+  useEffect(() => {
+    const element = metricRef.current
+    if (!element) return
+    let animationFrame = 0
+
+    const showFinalValue = () => setDisplayValue(value.toFixed(precision))
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      showFinalValue()
+      return
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return
+      const startedAt = performance.now()
+      const duration = 1350
+
+      const tick = (now: number) => {
+        const progress = Math.min((now - startedAt) / duration, 1)
+        const eased = 1 - Math.pow(1 - progress, 4)
+        setDisplayValue((value * eased).toFixed(precision))
+        if (progress < 1) animationFrame = requestAnimationFrame(tick)
+      }
+
+      animationFrame = requestAnimationFrame(tick)
+      observer.disconnect()
+    }, { threshold: 0.65 })
+
+    observer.observe(element)
+    return () => {
+      observer.disconnect()
+      cancelAnimationFrame(animationFrame)
+    }
+  }, [precision, value])
+
+  return <strong ref={metricRef}>{displayValue}{suffix}{detail && <small>{detail}</small>}</strong>
 }
 
 export default function NewPortfolio() {
   const [activeFilter, setActiveFilter] = useState<Filter>('All')
+  const [activeSection, setActiveSection] = useState('home')
   const filterRef = useRef<HTMLDivElement>(null)
   const [filterMarker, setFilterMarker] = useState({ left: 0, width: 0 })
 
@@ -168,14 +171,50 @@ export default function NewPortfolio() {
     return () => window.removeEventListener('resize', updateMarker)
   }, [activeFilter])
 
+  useLayoutEffect(() => {
+    const targets = document.querySelectorAll<HTMLElement>('.np-section-head, .np-timeline, .np-cap-title, .np-cap-list, .np-about-main, .np-contact > *')
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    targets.forEach((target) => target.classList.add('np-reveal'))
+
+    if (reduceMotion) {
+      targets.forEach((target) => target.classList.add('is-visible'))
+      return
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return
+        entry.target.classList.add('is-visible')
+        observer.unobserve(entry.target)
+      })
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' })
+
+    targets.forEach((target) => observer.observe(target))
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const sections = ['home', 'work', 'experience', 'capabilities', 'about', 'contact']
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => Boolean(section))
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+      if (visible) setActiveSection(visible.target.id)
+    }, { rootMargin: '-20% 0px -55% 0px', threshold: [0, .1, .25, .5] })
+
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="np-page">
       <header className="np-header">
         <nav className="np-nav" aria-label="Primary navigation">
-          <a href="#work">Work</a>
-          <a href="#experience">Experience</a>
-          <a href="#capabilities">Capabilities</a>
-          <a href="#about">About</a>
+          <a href="#work" className={activeSection === 'work' ? 'is-active' : ''}>Work</a>
+          <a href="#experience" className={activeSection === 'experience' ? 'is-active' : ''}>Experience</a>
+          <a href="#capabilities" className={activeSection === 'capabilities' ? 'is-active' : ''}>Capabilities</a>
+          <a href="#about" className={activeSection === 'about' ? 'is-active' : ''}>About</a>
         </nav>
         <a className="np-header-cta" href="#contact">Get in touch <Arrow /></a>
       </header>
@@ -192,9 +231,9 @@ export default function NewPortfolio() {
               <a className="np-button np-button--ghost" href="https://www.linkedin.com/in/ed-mishael-5aa633230/" target="_blank" rel="noreferrer">LinkedIn <Arrow /></a>
             </div>
             <div className="np-hero-stats" aria-label="Career highlights">
-              <div><strong>4.7 <small>/ 5.0</small></strong><span>Computer Science CGPA</span></div>
-              <div><strong>5+</strong><span>Production Systems Shipped</span></div>
-              <div><strong>300+</strong><span>Users Reached</span></div>
+              <div><AnimatedMetric value={4.7} precision={1} detail=" / 5.0" /><span>Computer Science CGPA</span></div>
+              <div><AnimatedMetric value={5} suffix="+" /><span>Production Systems Shipped</span></div>
+              <div><AnimatedMetric value={300} suffix="+" /><span>Users Reached</span></div>
             </div>
             <p className="np-availability"><span /> Open to software development opportunities.</p>
           </div>
@@ -248,7 +287,6 @@ export default function NewPortfolio() {
                     <span>/{project.number}</span>
                     <p>{project.type}</p>
                   </div>
-                  <ProjectVisual kind={project.visual} name={project.name} />
                   <div className="np-project-copy">
                     <h3>{project.name}</h3>
                     <p>{project.summary}</p>
