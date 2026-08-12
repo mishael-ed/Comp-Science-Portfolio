@@ -48,8 +48,10 @@ body:has(.np-page),
   top: 0;
   z-index: 10;
   border-bottom: 1px solid var(--line);
-  background: rgba(7,8,9,.88);
-  backdrop-filter: blur(18px);
+  background: linear-gradient(90deg,rgba(8,9,10,.72),rgba(28,30,33,.58),rgba(8,9,10,.72));
+  -webkit-backdrop-filter: blur(22px) saturate(125%);
+  backdrop-filter: blur(22px) saturate(125%);
+  box-shadow: 0 12px 40px rgba(0,0,0,.16), inset 0 -1px rgba(255,255,255,.025);
 }
 
 .np-nav { display: flex; gap: 34px; font-size: 12px; font-weight: 600; }
@@ -82,7 +84,7 @@ body:has(.np-page),
 .np-button--ghost:hover { background: rgba(255,255,255,.09); }
 .np-button span { position: relative; font-size: 16px; transition: transform .25s; }
 .np-button:hover span { transform: translateX(4px); }
-.np-hero-stats { width: min(100%, 790px); margin-top: 52px; display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.np-hero-stats { width: min(100%,790px); margin-top: 52px; display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .np-hero-stats > div { min-height: 120px; padding: 22px 26px 20px 0; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid var(--line); }
 .np-hero-stats > div:not(:first-child) { padding-left: 26px; }
 .np-hero-stats > div:last-child { border-right: 0; }
@@ -186,16 +188,16 @@ body:has(.np-page),
 .np-text-links a:hover { padding-left: 9px; color: white; border-color: rgba(255,255,255,.65); }
 .np-text-links a:hover span { transform: translateX(5px); }
 
-.np-contact { min-height: 750px; padding: 110px 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle at 50% 40%, #56595d, #222427 35%, #08090a 72%); }
-.np-contact h2 { margin: 40px 0 30px; font: 500 clamp(56px,7.4vw,108px)/.9 'Manrope'; letter-spacing: -.075em; }
+.np-contact { min-height: 750px; padding: 110px 28px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle at 50% 40%, #56595d, #222427 35%, #08090a 72%); }
+.np-contact h2 { margin: 40px 0 30px; font: 500 clamp(56px,7.4vw,108px)/.9 'Manrope',sans-serif; letter-spacing: -.075em; }
 .np-contact > p:not(.np-kicker) { max-width: 540px; color: #b6b8ba; font-size: 14px; line-height: 1.7; }
-.np-contact-button { margin-top: 40px; padding: 16px 19px; position: relative; overflow: hidden; display: flex; gap: 70px; align-items: center; color: #08090a !important; background: linear-gradient(135deg, white, #aeb0b3); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 18px 55px rgba(255,255,255,.09); transition: transform .28s, box-shadow .28s; }
+.np-contact-button { margin-top: 40px; padding: 16px 19px; position: relative; overflow: hidden; display: flex; gap: 70px; align-items: center; color: #08090a !important; background: linear-gradient(135deg,white,#aeb0b3); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 18px 55px rgba(255,255,255,.09); transition: transform .28s,box-shadow .28s; }
 .np-contact-button::before { content: ''; width: 42%; position: absolute; inset: -60% auto -60% -55%; background: linear-gradient(90deg,transparent,rgba(255,255,255,.85),transparent); transform: skewX(-20deg); transition: left .55s cubic-bezier(.22,1,.36,1); }
-.np-contact-button span { transition: transform .25s; }
+.np-contact-button span { position: relative; z-index: 1; transition: transform .25s; }
 .np-contact-button:hover { transform: translateY(-4px) scale(1.015); box-shadow: 0 24px 65px rgba(255,255,255,.16); }
 .np-contact-button:hover::before { left: 125%; }
 .np-contact-button:hover span { transform: translateX(5px); }
-.np-email { margin-top: 35px; padding-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,.5); color: #d2d3d5 !important; font-size: 12px; }
+.np-email { width: max-content; margin-top: 35px; padding-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,.5); color: #d2d3d5 !important; font-size: 12px; }
 .np-contact-socials { margin-top: 30px; display: flex; gap: 25px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
 .np-email, .np-contact-socials a { display: inline-flex; transition: color .25s, border-color .25s, text-shadow .25s, transform .25s; }
 .np-email:hover, .np-contact-socials a:hover { color: white !important; border-color: white; text-shadow: 0 0 18px rgba(255,255,255,.28); transform: translateY(-2px); }

@@ -8,7 +8,7 @@ export default function ProjectLeadRanx() {
     <div className="project-page">
       <nav className="project-nav">
         <button onClick={() => navigate(-1)} className="project-back">← Back to Portfolio</button>
-        <a href="/#contact" className="project-nav-contact">Get in touch <span>→</span></a>
+        <a href="/contact" className="project-nav-contact">Get in touch <span>→</span></a>
       </nav>
 
       <div className="project-hero">

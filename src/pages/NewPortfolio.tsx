@@ -216,7 +216,7 @@ export default function NewPortfolio() {
           <a href="#capabilities" className={activeSection === 'capabilities' ? 'is-active' : ''}>Capabilities</a>
           <a href="#about" className={activeSection === 'about' ? 'is-active' : ''}>About</a>
         </nav>
-        <a className="np-header-cta" href="#contact">Get in touch <Arrow /></a>
+        <Link className="np-header-cta" to="/contact">Get in touch <Arrow /></Link>
       </header>
 
       <main>
@@ -357,7 +357,7 @@ export default function NewPortfolio() {
           <p className="np-kicker">Have something interesting in mind?</p>
           <h2>Let’s build something<br /><em>worthwhile.</em></h2>
           <p>I’m open to software development opportunities, collaborations and interesting technical projects.</p>
-          <a className="np-contact-button" href="mailto:mishaeledegwa@gmail.com">Get in touch <Arrow /></a>
+          <Link className="np-contact-button" to="/contact">Get in touch <Arrow /></Link>
           <a className="np-email" href="mailto:mishaeledegwa@gmail.com">mishaeledegwa@gmail.com</a>
           <div className="np-contact-socials">
             <a href="https://www.linkedin.com/in/ed-mishael-5aa633230/" target="_blank" rel="noreferrer">LinkedIn <Arrow /></a>
