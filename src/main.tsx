@@ -15,6 +15,7 @@ import Experience from './pages/Experience.tsx'
 import Skills from './pages/Skills.tsx'
 import NewPortfolio from './pages/NewPortfolio.tsx'
 import ProjectLeadRanx from './pages/ProjectLeadRanx.tsx'
+import ProjectGreenfingers from './pages/ProjectGreenfingers.tsx'
 
 // Tell the browser we handle scroll restoration ourselves
 window.history.scrollRestoration = 'manual'
@@ -65,6 +66,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/projects/web3connect-hr" element={<ProjectWeb3ConnectHR />} />
         <Route path="/projects/bersk" element={<ProjectBERSK />} />
         <Route path="/projects/leadranx" element={<ProjectLeadRanx />} />
+        <Route path="/projects/greenfingers-wildlife-initiative" element={<ProjectGreenfingers />} />
         <Route path="/education" element={<Education />} />
         <Route path="/experience" element={<Experience />} />
         <Route path="/skills" element={<Skills />} />

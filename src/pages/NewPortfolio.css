@@ -93,6 +93,9 @@ body:has(.np-page),
 .np-hero-stats > div:hover strong { color: white; text-shadow: 0 0 25px rgba(255,255,255,.18); transform: translateY(-3px); }
 .np-hero-stats strong small { color: #85878a; font-size: .42em; letter-spacing: -.01em; }
 .np-hero-stats span { color: #9b9da0; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.np-hero-courses { width: min(100%,790px); margin-top: 22px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,.11); }
+.np-hero-courses > span { display: block; margin-bottom: 9px; color: #d06565; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.4px; }
+.np-hero-courses p { max-width: 760px; color: #9b9da0; font-size: 11px; line-height: 1.75; letter-spacing: .2px; }
 .np-availability { padding-top: 38px; display: flex; align-items: center; gap: 9px; color: #b4b6b8 !important; font-size: 11px; }
 .np-availability span { width: 7px; height: 7px; border: 1px solid white; border-radius: 50%; box-shadow: 0 0 0 4px rgba(255,255,255,.07); }
 
@@ -181,6 +184,8 @@ body:has(.np-page),
 .np-about-copy { margin: 80px 0 0 auto; max-width: 720px; }
 .np-about-copy > p { margin-bottom: 18px; color: #c0c2c4; font-size: 14px; line-height: 1.72; }
 .np-about-copy > p:first-child { color: white; font-size: 20px; }
+.np-coursework { margin: 28px 0 26px; display: flex; flex-wrap: wrap; gap: 7px; }
+.np-coursework span { padding: 7px 10px; border: 1px solid transparent; background: linear-gradient(#0e0f11,#0e0f11) padding-box, linear-gradient(125deg, rgba(255,255,255,.2), rgba(255,255,255,.035) 55%, rgba(208,101,101,.22)) border-box; color: #b7b9bb; font-size: 8px; text-transform: uppercase; letter-spacing: .8px; }
 .np-text-links { margin-top: 45px; display: flex; flex-direction: column; }
 .np-text-links a { padding: 13px 0; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.27); font-size: 11px; font-weight: 600; }
 .np-text-links a { transition: padding-left .25s, color .25s, border-color .25s; }
@@ -264,6 +269,7 @@ body:has(.np-page),
   .np-hero-stats > div:not(:first-child) { padding-left: 0; }
   .np-hero-stats > div:last-child { border-bottom: 0; }
   .np-hero-stats span { max-width: 130px; text-align: right; line-height: 1.45; }
+  .np-hero-courses p { font-size: 10px; line-height: 1.7; }
   .np-work, .np-experience, .np-capabilities, .np-about { padding-top: 90px; padding-bottom: 95px; }
   .np-section-head h2, .np-cap-title h2 { font-size: clamp(42px,12vw,62px); }
   .np-filter { margin-top: 48px; }

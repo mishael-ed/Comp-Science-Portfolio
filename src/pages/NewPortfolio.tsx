@@ -6,6 +6,19 @@ type Filter = 'All' | 'Web Development' | 'Frontend' | 'Full Stack' | 'Machine L
 
 const filters: Filter[] = ['All', 'Web Development', 'Frontend', 'Full Stack', 'Machine Learning', 'AI']
 
+const coursework = [
+  'Data Structures',
+  'Algorithms and Complexities',
+  'Object-Oriented Programming',
+  'Software Engineering',
+  'Operating Systems',
+  'Systems Analysis & Design',
+  'Data Management',
+  'Artificial Intelligence',
+  'Machine Learning',
+  'Computer Security',
+]
+
 const projects = [
   {
     number: '01',
@@ -27,6 +40,15 @@ const projects = [
   },
   {
     number: '03',
+    name: 'Greenfingers Wildlife Initiative',
+    type: 'Frontend · Nonprofit Website',
+    summary: 'A production website for a conservation organization, built to support public communication, program visibility, and operational credibility.',
+    stack: ['React', 'Responsive Design', 'Content Structure', 'Website Operations', 'Vercel'],
+    categories: ['Web Development', 'Frontend'] as Filter[],
+    to: '/projects/greenfingers-wildlife-initiative',
+  },
+  {
+    number: '04',
     name: 'Aggie Carpet Cleaning',
     type: 'Frontend · Lead Generation',
     summary: 'A fast, mobile-first customer acquisition website built to turn local search traffic into qualified service enquiries.',
@@ -35,7 +57,7 @@ const projects = [
     to: '/projects/aggie-carpet-cleaning',
   },
   {
-    number: '04',
+    number: '05',
     name: 'Colour Correction',
     type: 'Applied Machine Learning · Colour Science',
     summary: 'A text-colour classifier that uses WCAG-derived photometric features to predict whether black or white text will be most readable on any RGB background.',
@@ -44,7 +66,7 @@ const projects = [
     to: '/projects/colour-correction',
   },
   {
-    number: '05',
+    number: '06',
     name: 'Web3Connect HR',
     type: 'Frontend · Recruitment Platform',
     summary: 'A specialist recruitment platform that connects Web3 professionals with companies through structured candidate and employer intake experiences.',
@@ -53,7 +75,7 @@ const projects = [
     to: '/projects/web3connect-hr',
   },
   {
-    number: '06',
+    number: '07',
     name: 'BERSK',
     type: 'Frontend · Client Acquisition',
     summary: 'A focused single-page marketing site that turns high-intent traffic into qualified leads for an automated client acquisition agency.',
@@ -146,7 +168,7 @@ export default function NewPortfolio() {
   const filterRef = useRef<HTMLDivElement>(null)
   const [filterMarker, setFilterMarker] = useState({ left: 0, width: 0 })
 
-  const webDevelopmentOrder = ['Web3Connect HR', 'Aggie Carpet Cleaning', 'BERSK', 'LeadRanx']
+  const webDevelopmentOrder = ['Web3Connect HR', 'Greenfingers Wildlife Initiative', 'Aggie Carpet Cleaning', 'BERSK', 'LeadRanx']
   const visibleProjects = projects
     .filter((project) => activeFilter === 'All' || project.categories.includes(activeFilter))
     .sort((a, b) => activeFilter === 'Web Development'
@@ -235,6 +257,10 @@ export default function NewPortfolio() {
               <div><AnimatedMetric value={5} suffix="+" /><span>Production Systems Shipped</span></div>
               <div><AnimatedMetric value={300} suffix="+" /><span>Users Reached</span></div>
             </div>
+            <div className="np-hero-courses" aria-label="Courses completed">
+              <span>Courses completed</span>
+              <p>{coursework.join(' · ')}</p>
+            </div>
             <p className="np-availability"><span /> Open to software development opportunities.</p>
           </div>
         </section>
@@ -291,7 +317,11 @@ export default function NewPortfolio() {
                     <h3>{project.name}</h3>
                     <p>{project.summary}</p>
                     <div className="np-stack">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
-                    <Link className="np-case-button" to={project.to}>View project</Link>
+                    {project.to.startsWith('http') ? (
+                      <a className="np-case-button" href={project.to} target="_blank" rel="noreferrer">View project</a>
+                    ) : (
+                      <Link className="np-case-button" to={project.to}>View project</Link>
+                    )}
                   </div>
                 </article>
               ))}
@@ -343,6 +373,11 @@ export default function NewPortfolio() {
               <p>I enjoy building complete systems: understanding the problem, designing the architecture, developing the interface and backend, working with data, and ultimately getting the product into production.</p>
               <p>My work spans full-stack web development and applied machine learning, from customer-facing platforms and e-commerce systems to ML-powered prediction and decision-support tools.</p>
               <p>I graduated from Pan-Atlantic University with a BSc in Computer Science and a 4.7 CGPA, with coursework spanning machine learning, artificial intelligence, data structures and algorithms, data management, and software development.</p>
+              <div className="np-coursework" aria-label="Completed coursework">
+                {coursework.map((course) => (
+                  <span key={course}>{course}</span>
+                ))}
+              </div>
               <p>I’m particularly interested in engineering problems where software, data and intelligent systems come together.</p>
               <div className="np-text-links">
                 <a href="mailto:mishaeledegwa@gmail.com?subject=Resume request">Request résumé <Arrow /></a>

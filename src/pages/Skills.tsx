@@ -69,6 +69,19 @@ const years = [
   },
 ]
 
+const featuredCourses = [
+  'Data Structures',
+  'Algorithms and Complexities',
+  'Object-Oriented Programming',
+  'Software Engineering',
+  'Operating Systems',
+  'Systems Analysis & Design',
+  'Data Management',
+  'Artificial Intelligence',
+  'Machine Learning',
+  'Computer Security',
+]
+
 export default function Skills() {
   const navigate = useNavigate()
 
@@ -114,6 +127,17 @@ export default function Skills() {
       <div className="project-body">
 
         <section className="project-section">
+          <h2>Featured Coursework</h2>
+          <p>Core computer science courses completed during my BSc in Computer Science.</p>
+
+          <div className="skills-course-grid" style={{ marginBottom: '4rem' }}>
+            {featuredCourses.map(course => (
+              <div key={course} className="skills-course-pill">
+                {course}
+              </div>
+            ))}
+          </div>
+
           <h2>Course Breakdown by Year</h2>
           <p>The following are all computer science and technical subjects completed as part of my BSc in Computer Science at Pan-Atlantic University.</p>
 
