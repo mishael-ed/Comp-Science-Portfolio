@@ -22,6 +22,15 @@ const coursework = [
 const projects = [
   {
     number: '01',
+    name: 'RescueGraph',
+    type: 'Graph Data · Full-Stack Platform',
+    summary: 'A graph-powered wildlife rescue explorer that reveals the connections between animals, threats, locations, responders, facilities, and conservation outcomes.',
+    stack: ['React', 'TypeScript', 'FastAPI', 'CognoDB', 'Cypher', 'Cytoscape.js', 'Docker'],
+    categories: ['Web Development', 'Full Stack'] as Filter[],
+    to: '/projects/rescuegraph',
+  },
+  {
+    number: '02',
     name: 'LeadRanx',
     type: 'AI Lead Triage System',
     summary: 'An AI-assisted lead triage system that turns messy CSV lead data into a ranked and explainable shortlist for sales teams.',
@@ -30,7 +39,7 @@ const projects = [
     to: '/projects/leadranx',
   },
   {
-    number: '02',
+    number: '03',
     name: 'AI Student Performance Predictor',
     type: 'Machine Learning · Education',
     summary: 'An early-warning system designed to identify students at risk of academic failure before final examinations, giving educators an opportunity to intervene earlier.',
@@ -39,7 +48,7 @@ const projects = [
     to: '/projects/ai-performance-predictor',
   },
   {
-    number: '03',
+    number: '04',
     name: 'Greenfingers Wildlife Initiative',
     type: 'Frontend · Nonprofit Website',
     summary: 'A production website for a conservation organization, built to support public communication, program visibility, and operational credibility.',
@@ -48,7 +57,7 @@ const projects = [
     to: '/projects/greenfingers-wildlife-initiative',
   },
   {
-    number: '04',
+    number: '05',
     name: 'Aggie Carpet Cleaning',
     type: 'Frontend · Lead Generation',
     summary: 'A fast, mobile-first customer acquisition website built to turn local search traffic into qualified service enquiries.',
@@ -57,7 +66,7 @@ const projects = [
     to: '/projects/aggie-carpet-cleaning',
   },
   {
-    number: '05',
+    number: '06',
     name: 'Colour Correction',
     type: 'Applied Machine Learning · Colour Science',
     summary: 'A text-colour classifier that uses WCAG-derived photometric features to predict whether black or white text will be most readable on any RGB background.',
@@ -66,7 +75,7 @@ const projects = [
     to: '/projects/colour-correction',
   },
   {
-    number: '06',
+    number: '07',
     name: 'Web3Connect HR',
     type: 'Frontend · Recruitment Platform',
     summary: 'A specialist recruitment platform that connects Web3 professionals with companies through structured candidate and employer intake experiences.',
@@ -75,7 +84,7 @@ const projects = [
     to: '/projects/web3connect-hr',
   },
   {
-    number: '07',
+    number: '08',
     name: 'BERSK',
     type: 'Frontend · Client Acquisition',
     summary: 'A focused single-page marketing site that turns high-intent traffic into qualified leads for an automated client acquisition agency.',
@@ -89,7 +98,7 @@ const capabilities = [
   ['01', 'Frontend Development', 'Building responsive, accessible and component-driven interfaces for production applications.', 'React · TypeScript · JavaScript · Vite · Tailwind CSS'],
   ['02', 'Backend Development', 'Designing APIs, authentication systems, business logic and service integrations.', 'Node.js · Express · Python · REST APIs · JWT · Webhooks'],
   ['03', 'Data & Machine Learning', 'Building data pipelines and ML systems that turn raw data into usable predictions.', 'Python · Pandas · NumPy · Scikit-learn · XGBoost · TensorFlow/Keras'],
-  ['04', 'Databases', 'Designing and integrating relational data layers for production systems.', 'PostgreSQL · MySQL · SQLite · TypeORM · SQLAlchemy'],
+  ['04', 'Databases', 'Designing relational and graph data layers around the questions a production system needs to answer.', 'PostgreSQL · MySQL · SQLite · CognoDB · Neo4j · Cypher · TypeORM · SQLAlchemy'],
   ['05', 'Architecture & Deployment', 'Taking applications from local development through production deployment.', 'Docker · Git · GitHub · Vercel · Render · Clean Architecture · DDD'],
 ]
 
@@ -168,7 +177,7 @@ export default function NewPortfolio() {
   const filterRef = useRef<HTMLDivElement>(null)
   const [filterMarker, setFilterMarker] = useState({ left: 0, width: 0 })
 
-  const webDevelopmentOrder = ['Web3Connect HR', 'Greenfingers Wildlife Initiative', 'Aggie Carpet Cleaning', 'BERSK', 'LeadRanx']
+  const webDevelopmentOrder = ['RescueGraph', 'Web3Connect HR', 'Greenfingers Wildlife Initiative', 'Aggie Carpet Cleaning', 'BERSK', 'LeadRanx']
   const visibleProjects = projects
     .filter((project) => activeFilter === 'All' || project.categories.includes(activeFilter))
     .sort((a, b) => activeFilter === 'Web Development'
@@ -254,7 +263,7 @@ export default function NewPortfolio() {
             </div>
             <div className="np-hero-stats" aria-label="Career highlights">
               <div><AnimatedMetric value={4.7} precision={1} detail=" / 5.0" /><span>Computer Science CGPA</span></div>
-              <div><AnimatedMetric value={5} suffix="+" /><span>Production Systems Shipped</span></div>
+              <div><AnimatedMetric value={6} suffix="+" /><span>Production Systems Shipped</span></div>
               <div><AnimatedMetric value={300} suffix="+" /><span>Users Reached</span></div>
             </div>
             <div className="np-hero-courses" aria-label="Courses completed">
@@ -371,7 +380,7 @@ export default function NewPortfolio() {
             <div className="np-about-copy">
               <p>I’m Mishael Edegwa, a software developer based in Lagos, Nigeria.</p>
               <p>I enjoy building complete systems: understanding the problem, designing the architecture, developing the interface and backend, working with data, and ultimately getting the product into production.</p>
-              <p>My work spans full-stack web development and applied machine learning, from customer-facing platforms and e-commerce systems to ML-powered prediction and decision-support tools.</p>
+              <p>My work spans full-stack web development, graph data systems, and applied machine learning—from customer-facing platforms to connected-data exploration, prediction, and decision-support tools.</p>
               <p>I graduated from Pan-Atlantic University with a BSc in Computer Science and a 4.7 CGPA, with coursework spanning machine learning, artificial intelligence, data structures and algorithms, data management, and software development.</p>
               <div className="np-coursework" aria-label="Completed coursework">
                 {coursework.map((course) => (
