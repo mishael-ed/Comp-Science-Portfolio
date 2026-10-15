@@ -1,6 +1,15 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './NewPortfolio.css'
+import imgRescue from '../assets/projectimages/rescue graph image.png'
+import imgLeadRanx from '../assets/projectimages/leadranx.png'
+import imgStudent from '../assets/projectimages/studentacademicperformancepredictor .png'
+import imgGreenfingers from '../assets/projectimages/greenfingers site.png'
+import imgAggie from '../assets/projectimages/aggiecarpetcleaning.png'
+import imgColorCorrection from '../assets/projectimages/color correction.png'
+import imgWeb3 from '../assets/projectimages/web3connecthr.png'
+import imgBersk from '../assets/projectimages/bersk.png'
+
 
 type Filter = 'All' | 'Web Development' | 'Frontend' | 'Full Stack' | 'Machine Learning' | 'AI'
 
@@ -19,7 +28,20 @@ const coursework = [
   'Computer Security',
 ]
 
-const projects = [
+interface ProjectItem {
+  number: string
+  name: string
+  type: string
+  summary: string
+  stack: string[]
+  categories: Filter[]
+  to: string
+  image?: string
+  deployedUrl?: string
+  walkthroughUrl?: string
+}
+
+const projects: ProjectItem[] = [
   {
     number: '01',
     name: 'RescueGraph',
@@ -28,6 +50,9 @@ const projects = [
     stack: ['React', 'TypeScript', 'FastAPI', 'CognoDB', 'Cypher', 'Cytoscape.js', 'Docker'],
     categories: ['Web Development', 'Full Stack'] as Filter[],
     to: '/projects/rescuegraph',
+    image: imgRescue,
+    deployedUrl: 'https://rescuegraph.onrender.com/',
+    walkthroughUrl: 'https://drive.google.com/file/d/1GfT97ZIFHTPLY3onqS1Khd3tYnoGfYWS/view',
   },
   {
     number: '02',
@@ -37,6 +62,9 @@ const projects = [
     stack: ['React', 'FastAPI', 'Python', 'SQLite', 'Claude', 'Docker'],
     categories: ['Web Development', 'Full Stack', 'AI'] as Filter[],
     to: '/projects/leadranx',
+    image: imgLeadRanx,
+    deployedUrl: 'https://lead-triage-system.onrender.com/',
+    walkthroughUrl: 'https://www.loom.com/share/41f8454b130a4a8e85aeffd8fbe89437',
   },
   {
     number: '03',
@@ -46,6 +74,8 @@ const projects = [
     stack: ['Python', 'XGBoost', 'Random Forest', 'LSTM', 'TensorFlow', 'Streamlit'],
     categories: ['Machine Learning', 'AI'] as Filter[],
     to: '/projects/ai-performance-predictor',
+    image: imgStudent,
+    deployedUrl: 'https://final-year-project-5klwvgbbd76zt3u9lq87oh.streamlit.app/',
   },
   {
     number: '04',
@@ -55,6 +85,8 @@ const projects = [
     stack: ['React', 'Responsive Design', 'Content Structure', 'Website Operations', 'Vercel'],
     categories: ['Web Development', 'Frontend'] as Filter[],
     to: '/projects/greenfingers-wildlife-initiative',
+    image: imgGreenfingers,
+    deployedUrl: 'https://gfwsite2-ten.vercel.app/',
   },
   {
     number: '05',
@@ -64,6 +96,8 @@ const projects = [
     stack: ['React', 'JavaScript', 'CSS', 'SEO', 'FormSubmit', 'Vercel'],
     categories: ['Web Development', 'Frontend'] as Filter[],
     to: '/projects/aggie-carpet-cleaning',
+    image: imgAggie,
+    deployedUrl: 'https://aggiecarpetcleaning.com',
   },
   {
     number: '06',
@@ -73,6 +107,8 @@ const projects = [
     stack: ['Python', 'Scikit-learn', 'Pandas', 'Matplotlib', 'ipywidgets', 'Google Colab'],
     categories: ['Machine Learning', 'AI'] as Filter[],
     to: '/projects/colour-correction',
+    image: imgColorCorrection,
+    deployedUrl: 'https://colab.research.google.com/drive/1L9HxM8rlW8W6r5QWE5lhh9dFJD4LFKFQ',
   },
   {
     number: '07',
@@ -82,6 +118,8 @@ const projects = [
     stack: ['React', 'React Router', 'Vite', 'Vanilla CSS', 'JavaScript', 'Vercel'],
     categories: ['Web Development', 'Frontend'] as Filter[],
     to: '/projects/web3connect-hr',
+    image: imgWeb3,
+    deployedUrl: 'https://web3connect-hr.vercel.app/',
   },
   {
     number: '08',
@@ -91,8 +129,11 @@ const projects = [
     stack: ['HTML5', 'Vanilla CSS', 'JavaScript', 'FormSubmit', 'Font Awesome', 'Vercel'],
     categories: ['Web Development', 'Frontend'] as Filter[],
     to: '/projects/bersk',
+    image: imgBersk,
+    deployedUrl: 'https://bersktech-website.vercel.app/',
   },
 ]
+
 
 const capabilities = [
   ['01', 'Frontend Development', 'Building responsive, accessible and component-driven interfaces for production applications.', 'React · TypeScript · JavaScript · Vite · Tailwind CSS'],
@@ -294,7 +335,7 @@ export default function NewPortfolio() {
         <section className="np-work" id="work">
           <div className="np-section-head">
             <p className="np-kicker">Selected work / 2024—26</p>
-            <h2>Software with<br /><em>something to prove.</em></h2>
+            <h2>Projects with<br /><em>something to prove.</em></h2>
             <p>Substantial projects across web development, intelligent systems and production deployment.</p>
           </div>
 
@@ -317,25 +358,65 @@ export default function NewPortfolio() {
 
           <div className="np-project-list" aria-live="polite">
             {visibleProjects.map((project) => (
-                <article className="np-project" key={project.name}>
-                  <div className="np-project-meta">
-                    <span>/{project.number}</span>
-                    <p>{project.type}</p>
-                  </div>
-                  <div className="np-project-copy">
+              <article className="np-project" key={project.name}>
+                <div className="np-project-meta">
+                  <span>/{project.number}</span>
+                  <p>{project.type}</p>
+                </div>
+                <div className="np-project-copy">
+                  {/* Left column: name + image */}
+                  <div className="np-project-header">
                     <h3>{project.name}</h3>
-                    <p>{project.summary}</p>
-                    <div className="np-stack">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
-                    {project.to.startsWith('http') ? (
-                      <a className="np-case-button" href={project.to} target="_blank" rel="noreferrer">View project</a>
-                    ) : (
-                      <Link className="np-case-button" to={project.to}>View project</Link>
-                    )}
+                    <div className="np-project-image-slot">
+                      {project.image ? (
+                        <img src={project.image} alt={project.name} className="np-project-image" />
+                      ) : (
+                        <div className="np-project-image-empty" />
+                      )}
+                    </div>
                   </div>
-                </article>
-              ))}
+                  {/* Right column: description, stack, then buttons bottom-aligned with image */}
+                  <div className="np-project-details">
+                    <p>{project.summary}</p>
+                    <div className="np-stack">
+                      {project.stack.map((item) => (
+                        <span key={item}>{item}</span>
+                      ))}
+                    </div>
+                    {/* All buttons on one row, aligned to the bottom of this column */}
+                    <div className="np-project-btns">
+                      {project.walkthroughUrl && (
+                        <a
+                          className="np-action-btn np-action-btn--walkthrough"
+                          href={project.walkthroughUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Watch Walkthrough
+                        </a>
+                      )}
+                      {project.deployedUrl && (
+                        <a
+                          className="np-action-btn np-action-btn--light"
+                          href={project.deployedUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Launch Project
+                        </a>
+                      )}
+                      <Link className="np-case-button" to={project.to}>
+                        View project <span>→</span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
+
+
 
         <section className="np-experience" id="experience">
           <div className="np-section-head np-section-head--compact">

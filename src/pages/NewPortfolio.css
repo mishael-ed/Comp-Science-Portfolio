@@ -126,8 +126,6 @@ body:has(.np-page),
 .np-filter-marker { height: 2px; position: absolute; bottom: 0; z-index: 2; background: linear-gradient(90deg, transparent, var(--red) 22%, #e07171 50%, var(--red) 78%, transparent); box-shadow: 0 0 12px rgba(200,77,77,.2); pointer-events: none; transition: left .42s cubic-bezier(.22,1,.36,1), width .42s cubic-bezier(.22,1,.36,1); }
 .np-project-list { border-top: 1px solid var(--line); }
 .np-project { padding: clamp(42px,5vw,72px) 0; display: grid; grid-template-columns: 120px minmax(0,1fr); gap: clamp(30px,5vw,80px); }
-.np-project { animation: np-project-enter .55s cubic-bezier(.22,1,.36,1) both; }
-.np-project:nth-child(2) { animation-delay: .04s; }
 .np-project:nth-child(3) { animation-delay: .08s; }
 .np-project:nth-child(4) { animation-delay: .12s; }
 .np-project:nth-child(5) { animation-delay: .16s; }
@@ -135,19 +133,74 @@ body:has(.np-page),
 .np-project:not(:last-child) { border-bottom: 1px solid var(--line); }
 .np-project-meta > span { color: #d06565; font: 600 10px/1 'Manrope'; }
 .np-project-meta p { margin-top: 24px; color: #85878a; font-size: 9px; line-height: 1.45; text-transform: uppercase; letter-spacing: 1px; }
-.np-project-copy { padding: 0; display: grid; grid-template-columns: minmax(260px,.8fr) minmax(320px,1.2fr); column-gap: clamp(45px,7vw,105px); align-items: start; }
-.np-project-copy h3 { grid-column: 1; grid-row: 1 / 5; max-width: 440px; font: 500 clamp(38px,4.2vw,62px)/.98 'Manrope', sans-serif; letter-spacing: -.06em; }
-.np-project-copy h3 { transition: transform .4s cubic-bezier(.22,1,.36,1), color .3s; }
-.np-project:hover .np-project-copy h3 { color: white; transform: translateX(8px); }
+.np-project-copy { padding: 0; display: grid; grid-template-columns: minmax(260px,.85fr) minmax(320px,1.15fr); column-gap: clamp(45px,7vw,105px); align-items: end; }
+.np-project-header { display: flex; flex-direction: column; }
+.np-project-header h3 { max-width: 440px; font: 500 clamp(38px,4.2vw,62px)/.98 'Manrope', sans-serif; letter-spacing: -.06em; transition: transform .4s cubic-bezier(.22,1,.36,1), color .3s; }
+.np-project:hover .np-project-header h3 { color: white; transform: translateX(8px); }
+.np-project-image-slot {
+  margin-top: 24px;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 16 / 10;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.015);
+  overflow: hidden;
+  position: relative;
+  display: block;
+  transition: border-color .3s ease, background-color .3s ease, transform .4s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
+}
+.np-project:hover .np-project-image-slot {
+  border-color: rgba(255, 255, 255, 0.18);
+  background-color: rgba(255, 255, 255, 0.03);
+  transform: translateX(4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+.np-project-image-empty { width: 100%; height: 100%; }
+.np-project-image { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s cubic-bezier(.22,1,.36,1); }
+.np-project:hover .np-project-image { transform: scale(1.03); }
 .np-project-meta > span { transition: text-shadow .3s, color .3s; }
 .np-project:hover .np-project-meta > span { color: #e77979; text-shadow: 0 0 16px rgba(200,77,77,.35); }
-.np-project-copy > p { grid-column: 2; margin: 4px 0 0; max-width: 610px; color: var(--silver); font-size: 14px; line-height: 1.75; }
-.np-stack { grid-column: 2; margin-top: 26px; display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Right column: stretch to full height of the card, push buttons to bottom */
+.np-project-details { display: flex; flex-direction: column; height: 100%; }
+.np-project-details > p { margin: 4px 0 0; max-width: 610px; color: var(--silver); font-size: 14px; line-height: 1.75; }
+.np-stack { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 6px; }
 .np-stack span { padding: 7px 11px; position: relative; border: 1px solid transparent; border-radius: 0; background: linear-gradient(#0e0f11,#0e0f11) padding-box, linear-gradient(125deg, rgba(255,255,255,.22), rgba(255,255,255,.035) 55%, rgba(255,255,255,.13)) border-box; color: #b7b9bb; font-size: 8px; text-transform: uppercase; letter-spacing: .8px; }
-.np-case-button { width: max-content; grid-column: 2; margin-top: 34px; padding: 0 0 9px; position: relative; display: block; border: 0; background: none; cursor: pointer; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: letter-spacing .3s, color .3s, text-shadow .3s; }
-.np-case-button::after { content: ''; height: 1px; position: absolute; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg,#fff,rgba(255,255,255,.15),transparent); transform-origin: left; transition: transform .38s cubic-bezier(.22,1,.36,1), filter .3s; }
-.np-case-button:hover { color: white; letter-spacing: 1.8px; text-shadow: 0 0 16px rgba(255,255,255,.24); }
-.np-case-button:hover::after { transform: scaleX(.55) translateX(82%); filter: brightness(1.8); }
+
+/* Buttons row: place Watch above; keep Launch and View on the same line */
+.np-project-btns { margin-top: auto; padding-top: 26px; display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 42px; row-gap: 0; grid-template-areas: 'launch view'; }
+/* When Watch exists, place it on its own row above; keep View only on the bottom row with Launch */
+.np-project-btns:has(.np-action-btn--walkthrough) { grid-template-areas: 'watch .' 'launch view'; row-gap: 12px; }
+
+.np-case-button { grid-area: view; justify-self: end; align-self: center; padding: 0 0 4px; position: relative; display: inline-flex; align-items: center; gap: 6px; border: 0; background: none; cursor: pointer; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; transition: letter-spacing .3s, color .3s, text-shadow .3s; }
+
+.np-action-btn {
+  padding: 11px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 600 8.5px/1 'Manrope';
+  text-transform: uppercase;
+  letter-spacing: 0;
+  white-space: nowrap;
+  justify-self: start;
+  width: max-content;
+  transition: transform .25s, box-shadow .25s, background .22s, border-color .22s;
+}
+.np-action-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.35); }
+.np-action-btn span { font-size: 11px; transition: transform .22s; }
+.np-action-btn:hover span { transform: translateX(3px); }
+
+/* Launch button (left, same row as View) */
+.np-action-btn--light { grid-area: launch; color: #ffffff; background: #1e1f22; border: 1px solid rgba(255,255,255,.32); }
+.np-action-btn--light:hover { background: #2a2b2f; border-color: rgba(255,255,255,.6); }
+
+/* Watch Walkthrough button (red, above) */
+.np-action-btn--walkthrough { grid-area: watch; color: #fff; background: linear-gradient(135deg, #de6a6a, #c84d4d); border: 1px solid rgba(255,255,255,.32); }
+.np-action-btn--walkthrough:hover { background: linear-gradient(135deg, #e37777, #d25c5c); border-color: rgba(255,255,255,.55); }
+
+
 .np-experience { padding: 125px clamp(22px,7vw,108px); background: radial-gradient(circle at 4% 7%, #3a3c3f, #111214 27%, #070809 72%); }
 .np-experience > * { width: min(100%,1280px); margin-inline: auto; }
 .np-section-head--compact { grid-template-columns: .7fr 1.5fr; margin-bottom: 80px; }
@@ -247,11 +300,11 @@ body:has(.np-page),
 @media (max-width: 860px) {
   .np-project { grid-template-columns: 50px minmax(0,1fr); gap: 18px; }
   .np-project-meta p { writing-mode: vertical-rl; }
-  .np-project-copy { grid-column: 2; display: block; }
-  .np-project-copy { max-width: 680px; padding-right: 0; }
-  .np-project-copy h3 { max-width: 600px; }
-  .np-project-copy > p { margin-top: 24px; }
-  .np-stack { margin-top: 24px; }
+  .np-project-copy { grid-column: 2; display: flex; flex-direction: column; gap: 24px; max-width: 680px; padding-right: 0; }
+  .np-project-header h3 { max-width: 600px; }
+  .np-project-image-slot { max-width: 100%; margin-top: 18px; }
+  .np-project-details > p { margin-top: 0; }
+  .np-stack { margin-top: 20px; }
   .np-section-head--compact { grid-template-columns: 1fr; }
 }
 
